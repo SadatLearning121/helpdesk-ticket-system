@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Helpdesk Ticket System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">Helpdesk<span>Lite</span></div>
+    <p class="subtitle">Simple ticket tracking for small teams</p>
+  </header>
+
+  <main class="app-layout">
+    <!-- Left: New Ticket Form -->
+    <section class="panel panel-form">
+      <h2>Create New Ticket</h2>
+      <form id="ticketForm">
+        <div class="field">
+          <label for="title">Title <span>*</span></label>
+          <input type="text" id="title" name="title" placeholder="e.g. Wifi not working in Room 203" required>
+        </div>
+
+        <div class="field">
+          <label for="requester">Requester Name <span>*</span></label>
+          <input type="text" id="requester" name="requester" placeholder="e.g. John Smith" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Requester Email</label>
+          <input type="email" id="email" name="email" placeholder="e.g. john.smith@example.com">
+        </div>
+
+        <div class="field grid-2">
+          <div>
+            <label for="category">Category <span>*</span></label>
+            <select id="category" name="category" required>
+              <option value="">Select category</option>
+              <option value="Hardware">Hardware</option>
+              <option value="Software">Software</option>
+              <option value="Network">Network</option>
+              <option value="Access">Access / Accounts</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="priority">Priority <span>*</span></label>
+            <select id="priority" name="priority" required>
+              <option value="">Select priority</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">Description <span>*</span></label>
+          <textarea id="description" name="description" rows="4"
+            placeholder="Explain the issue with as much detail as possible..." required></textarea>
+        </div>
+
+        <div class="field grid-2">
+          <div>
+            <label for="assignee">Assigned To</label>
+            <input type="text" id="assignee" name="assignee" placeholder="e.g. IT Support Team">
+          </div>
+          <div>
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Ticket</button>
+        <p id="formMessage" class="form-message"></p>
+      </form>
+    </section>
+
+    <!-- Right: Ticket List -->
+    <section class="panel panel-list">
+      <div class="list-header">
+        <h2>Tickets</h2>
+        <div class="filters">
+          <input type="text" id="searchInput" placeholder="Search by title or requester…">
+          <select id="filterStatus">
+            <option value="all">All statuses</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+          <select id="filterPriority">
+            <option value="all">All priorities</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="ticketStats" class="stats-bar">
+        <!-- Filled by JS -->
+      </div>
+
+      <div id="ticketList" class="ticket-list">
+        <!-- Tickets rendered here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>HelpdeskLite &middot; Built with HTML, CSS &amp; JavaScript · Data stored in your browser (localStorage)</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
